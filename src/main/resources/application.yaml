@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: AiDriveEtl
+
+  # Datasource PostgreSQL
+  datasource:
+    url: jdbc:postgresql://localhost:5433/aidrivedb
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  # JPA / Hibernate
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # Spring AI / OpenAI
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-4o-mini
+          temperature: 0.0
+
+# Configurações do pipeline ETL local
+etl:
+  csv:
+    # Diretório fixo onde o arquivo CSV de entrada será lido
+    input-dir: ./data/input
+    # Diretório para onde o arquivo será movido após processamento bem-sucedido
+    processed-dir: ./data/processados
