@@ -46,7 +46,7 @@ public class LeadEntity {
      */
     @Column(name = "mensagem_original", columnDefinition = "TEXT", nullable = false)
     private String mensagemOriginal;
-
+ 
     /**
      * Tipo de imóvel identificado pela IA a partir da mensagem do lead.
      * Exemplos: Casa, Apartamento, Terreno, Comercial.
