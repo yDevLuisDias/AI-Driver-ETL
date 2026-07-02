@@ -32,18 +32,18 @@ Este repositório foi construído visando padrões de mercado para sistemas de a
 graph TD
     A[Início: POST /api/leads/process] -->|Aciona o Pipeline| B(Controller)
 
-    subgraph Fase 1: Extract
+    subgraph fase1 [Fase 1: Extract]
         B --> C[CsvService]
         C -->|Valida & Lê| D[data/input/leads.csv]
     end
 
-    subgraph Fase 2: Transform (IA)
+    subgraph fase2 [Fase 2: Transform IA]
         C -->|LeadRoleDto| E[AiAnalysisService]
         E -->|System Prompt| F((OpenAI API))
         F -->|JSON: LeadAiResponseDto| E
     end
 
-    subgraph Fase 3: Load
+    subgraph fase3 [Fase 3: Load]
         E -->|LeadEntity| G[LeadRepository]
         G -->|Persiste| H[(PostgreSQL)]
     end
